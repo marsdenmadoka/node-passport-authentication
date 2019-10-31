@@ -1,9 +1,9 @@
 const express=require('express');
-const route=expres.Router();
+const router=express.Router();
 const bcrypt=require('bcryptjs');
 const passport=require('passport');
  //User model
- const User=require('../models/User ');
+ const User=require('../models/User');
 //Login page rendering
 //refer to welcome.ejs to see how the login and register views are called
 router.get('/login',(req,res)=>res.render('login'))
@@ -97,5 +97,5 @@ req.flash('success_msg','your are logged out');
 res.redirect('/users/login');
 
 });
-module.export=router;
+module.exports=router;
  

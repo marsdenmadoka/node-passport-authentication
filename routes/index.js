@@ -1,6 +1,6 @@
 const express=require('express');
-const route=expres.Router();
-const{ ensureAuthenticated }=require('../config/auth');
+const router=express.Router();
+const{ ensureAuthenticated, }=require('../config/auth');
  
 // render the welcome.ejs file
 //the welcome ejs file also cointains the views of the login and register.ejs files
@@ -14,4 +14,4 @@ res.render('dashboard',{
 
 
 
-module.export=router; 
+module.exports=router; 

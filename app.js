@@ -14,7 +14,7 @@ require('./config/passport')(passport);
 const db=require('./config/keys').MongoURI;
 //connect
 
-mongoose.connect(db,{ useNewUrlParser: true })
+mongoose.connect(db,{ useNewUrlParser: true,useUnifiedTopology: true})
 .then(()=> console.log('MongoDB Connected'))
 .catch(err => console.log(err));
 
@@ -50,5 +50,5 @@ next();
 //note routes files are called by use of the require and they must be exported using the export in their origin export rule
 app.use('/',require('./routes/index'));
 app.use('/users',require('./routes/users'));
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
   app.listen(PORT, console.log(`server started on port ${PORT}`));
