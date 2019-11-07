@@ -8,12 +8,12 @@ const passport=require('passport');
 //refer to welcome.ejs to see how the login and register views are called
 router.get('/login',(req,res)=>res.render('login'))
 //Register page rendering
-router.get('/register',(req,res)=>res.register('register'))
+router.get('/register',(req,res)=>res.render('register'))
 //register handle
 router.post('/register',(req,res)=>{
 const{name,email,password,password2}=req.body; 
 
-let errors=[];
+let errors=[true];
 //check required fields 
 if(!name||!email||!password||!password2){
  errors.push({msg:'please fill in all field'}); 
