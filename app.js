@@ -12,12 +12,13 @@ const app=express();
 //passport config
 require('./config/passport')(passport);
 //DB config
-const db=require('./config/keys').MongoURI;
-//connect
+mongoose.connect('mongodb://localhost:27017/nodepassportauth',{useNewUrlParser: true,useCreateIndex:true,useUnifiedTopology: true}); 
+var db=mongoose.connection; 
+db.on('error', console.log.bind(console, "connection error")); 
+db.once('open', function(callback){ 
+    console.log("connection succeeded"); 
+}) 
 
-mongoose.connect(db,{ useNewUrlParser: true,useUnifiedTopology: true})
-.then(()=> console.log('MongoDB Connected'))
-.catch(err => console.log(err));
 
 //EJS (middleware)
 //the views are called and passed using the middlware using the view engine
@@ -51,5 +52,5 @@ next();
 //note routes files are called by use of the require and they must be exported using the export in their origin export rule
 app.use('/',require('./routes/index'));
 app.use('/users',require('./routes/users'));
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
   app.listen(PORT, console.log(`server started on port ${PORT}`));
